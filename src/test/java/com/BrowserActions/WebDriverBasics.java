@@ -8,6 +8,10 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 
 public class WebDriverBasics {
     WebDriver driver ;
@@ -31,10 +35,16 @@ public class WebDriverBasics {
         driver.findElement(By.cssSelector("input[name='my-password']")).sendKeys("Pass12345#");
         driver.findElement(By.cssSelector("label textarea")).sendKeys("text area content");
 
+        /*
+        The Selenium WebDriver API does not provide a mechanism to handle file inputs.
+        Instead, we should treat input elements for uploading files as regular text inputs, so we need to simulate the user typing them.
+        In particular, we need to type the absolute file path to be uploaded.
+         */
+        driver.findElement(By.cssSelector("test"));
 
     }
     @Test
-    public void navigation(){
+    public void navigation() throws IOException, IOException {
         driver.get(bonigarciaTestPage);
         Assert.assertTrue(driver.getTitle().equals("Hands-On Selenium WebDriver with Java"));
 
@@ -47,6 +57,10 @@ public class WebDriverBasics {
 
         driver.findElement(By.xpath("//a[text()='Next']")).click();
         Assert.assertTrue(driver.findElement(By.cssSelector("body p")).getText().startsWith("Excepteur"));
+
+        Path tempFile = Files.createTempFile("tempfiles", ".tmp");
+        String filename = tempFile.toAbsolutePath().toString();
+
 
     }
 
