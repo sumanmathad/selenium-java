@@ -1,0 +1,17 @@
+{
+  "firstName":"Suman",
+  "lastName": "Mathad",
+  "address": [
+    {
+      "street": "Ganga Nilaya",
+      "city": "Lingasugur",
+      "state": "Karnataka"
+    },
+    {
+      "street": "Sai Avenue",
+      "city": "Hyderabad",
+      "state": "Telangana"
+    }
+
+  ]
+}
